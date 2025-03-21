@@ -21,6 +21,12 @@ public class Main {
 
         while (true) {
             logger.debug("Mostra il menu principale");
+            System.out.println("Numero di elementi nell'archivio: " + archivio.size());
+
+            // Se l'archivio è vuoto, mostra un messaggio
+            if (archivio.size() == 0) {
+                System.out.println("L'archivio è vuoto.");
+            }
             System.out.println("\n--- Menu Archivio ---");
             System.out.println("1. Aggiungi Libro");
             System.out.println("2. Aggiungi Rivista");
