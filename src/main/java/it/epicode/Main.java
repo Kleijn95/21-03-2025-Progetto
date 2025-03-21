@@ -23,7 +23,7 @@ public class Main {
             logger.debug("Mostra il menu principale");
             System.out.println("Numero di elementi nell'archivio: " + archivio.size());
 
-            // Se l'archivio è vuoto, mostra un messaggio
+
             if (archivio.size() == 0) {
                 System.out.println("L'archivio è vuoto.");
             }
@@ -37,6 +37,7 @@ public class Main {
             System.out.println("7. Modifica Elemento");
             System.out.println("8. Stampa Statistiche");
             System.out.println("9. Esci");
+            System.out.println("10. Stampa Catalogo");
             System.out.print("Scegli un'opzione: ");
 
             int scelta = scanner.nextInt();
@@ -158,7 +159,7 @@ public class Main {
 
                     CatalogoBibliotecario elementoDaModificare = null;
                     try {
-                        elementoDaModificare = archivio.ricercaPerIsbn(isbnModifica); // Ricerca l'elemento tramite ISBN
+                        elementoDaModificare = archivio.ricercaPerIsbn(isbnModifica);
                     } catch (ElementoNonTrovatoException e) {
                         logger.error("Elemento non trovato: " + e.getMessage());
                         System.out.println(e.getMessage());
@@ -178,7 +179,7 @@ public class Main {
                         int nuovoAnno = scanner.nextInt();
                         System.out.print("Inserisci nuove pagine: ");
                         int nuovePagine = scanner.nextInt();
-                        scanner.nextLine(); // Pulisce il buffer
+                        scanner.nextLine();
 
                         System.out.print("Inserisci autore: ");
                         String nuovoAutore = scanner.nextLine();
@@ -188,7 +189,7 @@ public class Main {
                         Libro nuovoLibro = new Libro(nuovoIsbn, nuovoTitolo, nuovoAnno, nuovePagine, nuovoAutore, nuovoGenere);
 
                         try {
-                            archivio.modificaElemento(isbnModifica, nuovoLibro); // Modifica l'elemento nel catalogo
+                            archivio.modificaElemento(isbnModifica, nuovoLibro);
                             logger.info("Libro modificato con successo");
                             System.out.println("Libro modificato con successo!\n");
                         } catch (ElementoNonTrovatoException e) {
@@ -209,7 +210,7 @@ public class Main {
                         int nuovoAnno = scanner.nextInt();
                         System.out.print("Inserisci nuove pagine: ");
                         int nuovePagine = scanner.nextInt();
-                        scanner.nextLine(); // Pulisce il buffer
+                        scanner.nextLine();
 
                         System.out.print("Inserisci la periodicità (SETTIMANALE, MENSILE, SEMESTRALE): ");
                         String periodicitaInput = scanner.nextLine();
@@ -218,7 +219,7 @@ public class Main {
                         Rivista nuovaRivista = new Rivista(nuovoIsbn, nuovoTitolo, nuovoAnno, nuovePagine, nuovaPeriodicita);
 
                         try {
-                            archivio.modificaElemento(isbnModifica, nuovaRivista); // Modifica l'elemento nel catalogo
+                            archivio.modificaElemento(isbnModifica, nuovaRivista);
                             logger.info("Rivista modificata con successo");
                             System.out.println("Rivista modificata con successo!\n");
                         } catch (ElementoNonTrovatoException e) {
@@ -240,6 +241,14 @@ public class Main {
                     System.out.println("Uscita dal programma.");
                     scanner.close();
                     System.exit(0);
+                case 10:
+                    logger.info("Stampa catalogo");
+                    System.out.println("\n--- Stampa Catalogo ---");
+
+                    archivio.stampaCatalogo();
+                    logger.info("Catalogo stampato");
+                    System.out.println("Catalogo stampato!\n");
+                    break;
                 default:
                     logger.warn("Opzione non valida scelta");
                     System.out.println("Opzione non valida. Riprova.\n");

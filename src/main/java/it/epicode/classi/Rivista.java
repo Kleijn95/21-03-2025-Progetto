@@ -14,6 +14,7 @@ public class Rivista extends CatalogoBibliotecario {
 
     public Rivista(String isbn, String titolo, int annoPubblicazione, int numeroPagine, Periodicita periodicita) {
         super(isbn, titolo, annoPubblicazione, numeroPagine);
+
         this.periodicita = periodicita;
         logger.info("Rivista creata: ISBN={}, Titolo={}, Periodicità={}", isbn, titolo, periodicita);
 

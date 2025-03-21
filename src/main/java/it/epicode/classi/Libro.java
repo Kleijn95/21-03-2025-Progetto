@@ -18,6 +18,7 @@ public class Libro extends CatalogoBibliotecario {
         super(isbn, titolo, annoPubblicazione, numeroPagine);
         this.autore = autore;
         this.genere = genere;
+
         logger.info("Libro creato: ISBN={}, Titolo={}, Autore={}, Genere={}", isbn, titolo, autore, genere);
     }
     @Override

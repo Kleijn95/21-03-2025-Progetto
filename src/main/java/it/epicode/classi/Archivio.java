@@ -133,6 +133,10 @@ public class Archivio {
     public int size() {
         return catalogo.size();
     }
+
+    public void stampaCatalogo() {
+        catalogo.forEach(elemento -> logger.info("Elemento: {}", elemento));
+    }
 }
 
 
